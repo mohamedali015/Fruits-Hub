@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'app_colors.dart';
-import 'app_constrains.dart';
+import 'package:fruits_hub/core/utils/app_colors.dart';
+import 'package:fruits_hub/core/utils/app_constants.dart';
 
 class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    // textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme),
-    scaffoldBackgroundColor: AppColors.primary,
-    brightness: Brightness.dark,
+    fontFamily: AppConstants.fontFamily,
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
   );
 }

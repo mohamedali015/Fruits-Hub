@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/features/on_boarding/manager/on_boarding_cubit.dart';
 import 'package:fruits_hub/features/on_boarding/view/widgets/on_boarding_view_body.dart';
 
 class OnBoardingView extends StatelessWidget {
@@ -8,8 +10,11 @@ class OnBoardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: OnBoardingViewBody(),
+    return BlocProvider(
+      create: (context) => OnBoardingCubit(),
+      child: const Scaffold(
+        body: OnBoardingViewBody(),
+      ),
     );
   }
 }
