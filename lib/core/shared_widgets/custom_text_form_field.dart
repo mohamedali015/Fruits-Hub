@@ -6,8 +6,8 @@ import '../utils/app_colors.dart';
 import '../utils/app_strings.dart';
 import '../utils/app_text_styles.dart';
 
-class AppTextField extends StatelessWidget {
-  const AppTextField({
+class CustomTextFormField extends StatelessWidget {
+  const CustomTextFormField({
     super.key,
     required this.type,
     required this.controller,
@@ -52,24 +52,21 @@ class AppTextField extends StatelessWidget {
   }) {
     return InputDecoration(
       hintText: hint,
-      // hintStyle:
-      //     AppTextStyles.Medium_W500_12(context, color: AppColors.darkGray),
+      hintStyle: AppTextStyles.bold13.copyWith(color: AppColors.gray400),
       labelText: label,
-      // labelStyle:
-      //     AppTextStyles.Medium_W500_12(context, color: AppColors.darkGray),
-      // errorStyle: AppTextStyles.Medium_W500_12(context, color: AppColors.red),
+      labelStyle: AppTextStyles.bold13.copyWith(color: AppColors.gray400),
       filled: true,
-      fillColor: AppColors.lightWhite,
+      fillColor: AppColors.fillColor,
       contentPadding: EdgeInsets.symmetric(
         vertical: MyResponsive.height(value: 20),
         horizontal: MyResponsive.width(value: 10),
       ),
       prefixIcon: prefixIcon,
       suffixIcon: suffixIcon,
-      border: _border(context, AppColors.grey),
+      border: _border(context, AppColors.borderColor),
       focusedErrorBorder: _border(context, AppColors.red),
       focusedBorder: _border(context, AppColors.primary),
-      enabledBorder: _border(context, AppColors.grey),
+      enabledBorder: _border(context, AppColors.borderColor),
       errorBorder: _border(context, AppColors.red),
     );
   }
@@ -81,7 +78,7 @@ class AppTextField extends StatelessWidget {
   InputBorder _border(BuildContext context, Color color) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.all(
-        Radius.circular(MyResponsive.width(value: 10)),
+        Radius.circular(MyResponsive.radius(value: 4)),
       ),
       borderSide: BorderSide(color: color, width: 1),
     );
@@ -101,7 +98,10 @@ class AppTextField extends StatelessWidget {
       decoration: _inputDecoration(
         context,
         label: AppStrings.fullName,
-        prefixIcon: Icon(Icons.person),
+        prefixIcon: Icon(
+          Icons.person,
+          color: AppColors.gray400,
+        ),
       ),
     );
   }
@@ -119,7 +119,10 @@ class AppTextField extends StatelessWidget {
       decoration: _inputDecoration(
         context,
         label: AppStrings.email,
-        prefixIcon: Icon(Icons.email),
+        prefixIcon: Icon(
+          Icons.email,
+          color: AppColors.gray400,
+        ),
       ),
     );
   }
@@ -137,11 +140,21 @@ class AppTextField extends StatelessWidget {
       keyboardType: TextInputType.visiblePassword,
       decoration: _inputDecoration(
         context,
-        label: AppStrings.password,
-        prefixIcon: Icon(Icons.lock),
+        label: passController == null
+            ? AppStrings.password
+            : AppStrings.confirmPassword,
+        prefixIcon: Icon(Icons.lock, color: AppColors.gray400),
         suffixIcon: IconButton(
           onPressed: onSuffixTapped,
-          icon: obsecure ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
+          icon: obsecure
+              ? Icon(
+                  Icons.visibility,
+                  color: AppColors.gray400,
+                )
+              : Icon(
+                  Icons.visibility_off,
+                  color: AppColors.gray400,
+                ),
         ),
       ),
     );

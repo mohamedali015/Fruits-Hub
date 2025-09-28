@@ -13,4 +13,9 @@ abstract class AppAssets {
   static const String onBoardingImage2 = "${basePath}page_view_item2_image.svg";
   static const String onBoardingBackground2 =
       "${basePath}page_view_item2_background.svg";
+
+  // auth
+  static const String googleLogo = "${basePath}google.svg";
+  static const String facebookLogo = "${basePath}facebook.svg";
+  static const String appleLogo = "${basePath}apple.svg";
 }

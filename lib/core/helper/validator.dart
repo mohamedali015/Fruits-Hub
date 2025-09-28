@@ -1,53 +1,45 @@
+import 'package:fruits_hub/core/utils/app_strings.dart';
+
 abstract class Validator {
   static String? name(String? value) {
     if (value == null || value.isEmpty) {
-      return "Name is required";
+      return AppStrings.nameRequired;
     }
     if (value.length < 3) {
-      return "Name must be at least 3 characters long";
+      return AppStrings.nameTooShort;
     }
     return null;
   }
 
   static String? email(String? value) {
     if (value == null || value.isEmpty) {
-      return "Email is required";
+      return AppStrings.emailRequired;
     }
-    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    final emailRegex = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
     if (!emailRegex.hasMatch(value)) {
-      return "Please enter a valid email address";
+      return AppStrings.emailInvalid;
     }
     return null;
   }
 
   static String? password(String? value) {
     if (value == null || value.isEmpty) {
-      return "Password is required";
+      return AppStrings.passwordRequired;
     }
     if (value.length < 6) {
-      return "Password must be at least 6 characters long";
+      return AppStrings.passwordTooShort;
     }
     return null;
   }
 
   static String? confirmPassword(String? value, String? password) {
     if (value == null || value.isEmpty) {
-      return "Field required";
+      return AppStrings.confirmPasswordRequired;
     }
     if (value != password) {
-      return "Passwords do not match";
+      return AppStrings.passwordsNotMatch;
     }
     return null;
   }
-
-// static String? phone(String? value) {
-//   if (value == null || value.isEmpty) {
-//     return TranslationKeys.phoneRequired.tr;
-//   }
-//   final phoneRegex = RegExp(r'^\d{11}$');
-//   if (!phoneRegex.hasMatch(value)) {
-//     return TranslationKeys.phoneValid.tr;
-//   }
-//   return null;
-// }
 }

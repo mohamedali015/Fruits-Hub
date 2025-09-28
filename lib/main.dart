@@ -10,6 +10,7 @@ import 'package:fruits_hub/features/splash/view/splash_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
 import 'core/cache/cache_helper.dart';
+import 'features/auth/view/register_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,11 +47,11 @@ class MyApp extends StatelessWidget {
 
           // routes
           onGenerateRoute: onGenerateRoutes,
-          initialRoute: LoginView.routeName,
+          initialRoute: RegisterView.routeName,
           home: child,
         );
       },
-      child: const LoginView(),
+      child: const RegisterView(),
     );
   }
 }
