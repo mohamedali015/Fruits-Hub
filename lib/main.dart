@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_hub/core/helper/one_generate_routes.dart';
+import 'package:fruits_hub/core/network/firebase_helper.dart';
 import 'package:fruits_hub/core/utils/app_theme.dart';
 import 'package:fruits_hub/features/auth/view/login_view.dart';
 import 'package:fruits_hub/features/auth/view/login_view.dart';
@@ -16,6 +17,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await CacheHelper.init();
+  await FirebaseHelper.firebaseInit();
   runApp(const MyApp());
 }
 

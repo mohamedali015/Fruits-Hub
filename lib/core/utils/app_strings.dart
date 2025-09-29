@@ -54,4 +54,35 @@ abstract class AppStrings {
 
   // الحقول الفارغة
   static const String emptyField = "هذا الحقل مطلوب";
+
+  // ✅ Auth Errors
+  static const String userNotFound = "لا يوجد مستخدم بهذا البريد.";
+  static const String wrongPassword = "كلمة المرور غير صحيحة.";
+  static const String emailAlreadyInUse = "هذا البريد مستخدم بالفعل.";
+  static const String weakPassword = "كلمة المرور ضعيفة جدًا.";
+  static const String invalidEmail = "البريد الإلكتروني غير صالح.";
+  static const String userDisabled = "تم تعطيل حساب هذا المستخدم.";
+  static const String tooManyRequests = "عدد محاولات كبير جدًا، حاول لاحقًا.";
+  static const String operationNotAllowed = "طريقة تسجيل الدخول غير مفعلة.";
+  static const String defaultAuthError = "حدث خطأ في تسجيل الدخول.";
+
+  // ✅ Firestore Errors
+  static const String permissionDenied = "ليس لديك صلاحية لهذه العملية.";
+  static const String notFound = "المستند المطلوب غير موجود.";
+  static const String alreadyExists = "هذا المستند موجود بالفعل.";
+  static const String cancelled = "تم إلغاء العملية.";
+  static const String deadlineExceeded = "العملية استغرقت وقتًا طويلًا.";
+  static const String unavailable = "الخدمة غير متوفرة حاليًا.";
+
+  // ✅ Storage Errors
+  static const String objectNotFound = "الملف المطلوب غير موجود.";
+  static const String unauthorized = "ليست لديك صلاحية للوصول لهذا الملف.";
+  static const String retryLimitExceeded = "عدد محاولات زائد، حاول لاحقًا.";
+  static const String quotaExceeded = "تم استهلاك المساحة المسموحة.";
+  static const String canceled = "تم إلغاء تحميل/تنزيل الملف.";
+  static const String invalidChecksum = "تم إتلاف الملف أثناء النقل.";
+  static const String unknownError = "خطأ غير معروف.";
+
+  // ✅ Default
+  static const String unexpectedError = "حدث خطأ غير متوقع.";
 }
