@@ -24,6 +24,7 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     CacheHelper.saveData(key: CacheKeys.firstTime, value: true);
     CacheData.firstTime = true;
 
-    Navigator.pushReplacementNamed(context, LoginView.routeName);
+    Navigator.pushNamedAndRemoveUntil(
+        context, LoginView.routeName, (route) => false);
   }
 }

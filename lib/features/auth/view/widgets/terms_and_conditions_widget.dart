@@ -6,6 +6,7 @@ import 'package:fruits_hub/core/utils/app_colors.dart';
 import '../../../../core/utils/app_constants.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_styles.dart';
+import '../../manager/register_cubit/register_cubit.dart';
 
 class TermsAndConditionRow extends StatelessWidget {
   const TermsAndConditionRow({
@@ -14,14 +15,17 @@ class TermsAndConditionRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RegisterCubit cubit = RegisterCubit.get(context);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Transform.scale(
           scale: 1.4,
           child: Checkbox(
-            value: true,
-            onChanged: (value) {},
+            value: cubit.isChecked,
+            onChanged: (value) {
+              cubit.isCheckedChange();
+            },
           ),
         ),
         SizedBox(

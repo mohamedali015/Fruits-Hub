@@ -31,11 +31,15 @@ abstract class AppStrings {
   static const String signWithFacebook = "تسجيل بواسطة فيسبوك";
   static const String signWithApple = "تسجيل بواسطة أبل";
   static const String conditionsAndTerms = "الشروط والأحكام الخاصة بنا";
+  static const String acceptConditionAndTerms =
+      "يجب الموافقة على الشروط والأحكام أولاً";
   static const String bySigningUp = "من خلال إنشاء حساب، فإنك توافق على";
+  static const String successRegister = "تم انشاء الحساب بنجاح";
+  static const String successLogin = "تم تسجيل الدخول بنجاح";
 
   // validators
   // الاسم
-  static const String nameRequired = "من فضلك أدخل الاسم الكامل";
+  static const String nameRequired = "من فضلك أدخل الاسم بالكامل";
   static const String nameTooShort = "الاسم يجب أن يحتوي على 3 أحرف على الأقل";
 
   // البريد الإلكتروني
@@ -64,6 +68,8 @@ abstract class AppStrings {
   static const String userDisabled = "تم تعطيل حساب هذا المستخدم.";
   static const String tooManyRequests = "عدد محاولات كبير جدًا، حاول لاحقًا.";
   static const String operationNotAllowed = "طريقة تسجيل الدخول غير مفعلة.";
+  static const String networkRequestFailed =
+      "فشل في الاتصال بالشبكة، تحقق من اتصالك.";
   static const String defaultAuthError = "حدث خطأ في تسجيل الدخول.";
 
   // ✅ Firestore Errors

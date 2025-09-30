@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_hub/core/helper/one_generate_routes.dart';
@@ -11,13 +12,17 @@ import 'package:fruits_hub/features/splash/view/splash_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
 import 'core/cache/cache_helper.dart';
+import 'core/helper/custom_bloc_observer.dart';
+import 'core/helper/get_it.dart';
 import 'features/auth/view/register_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  Bloc.observer = CustomBlocObserver();
   await CacheHelper.init();
   await FirebaseHelper.firebaseInit();
+  setupGetIt();
   runApp(const MyApp());
 }
 
@@ -49,11 +54,11 @@ class MyApp extends StatelessWidget {
 
           // routes
           onGenerateRoute: onGenerateRoutes,
-          initialRoute: RegisterView.routeName,
+          initialRoute: LoginView.routeName,
           home: child,
         );
       },
-      child: const RegisterView(),
+      child: const LoginView(),
     );
   }
 }

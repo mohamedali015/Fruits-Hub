@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/utils/app_strings.dart';
 import 'package:fruits_hub/features/auth/data/repo/auth_repo.dart';
 import 'package:fruits_hub/features/auth/manager/register_cubit/register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit() : super(RegisterInitialState());
+  RegisterCubit(this.authRepo) : super(RegisterInitialState());
 
   static RegisterCubit get(context) => BlocProvider.of(context);
 
@@ -15,12 +16,17 @@ class RegisterCubit extends Cubit<RegisterState> {
   final confirmPasswordController = TextEditingController();
   bool isChecked = false;
   bool obscureText = true;
+  bool obscureConfirmText = true;
 
-  AuthRepo authRepo = AuthRepo();
+  final AuthRepo authRepo;
 
   void register() async {
     if (!formKey.currentState!.validate()) {
       return;
+    }
+    if (!isChecked) {
+      return emit(RegisterFailureState(AppStrings.acceptConditionAndTerms));
+      // return ;
     }
     emit(RegisterLoadingState());
     var result = await authRepo.createUserWithEmailAndPassword(
@@ -42,6 +48,11 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void togglePasswordVisibility() {
     obscureText = !obscureText;
+    emit(RegisterToggleState());
+  }
+
+  void toggleConfirmPasswordVisibility() {
+    obscureConfirmText = !obscureConfirmText;
     emit(RegisterToggleState());
   }
 }

@@ -31,6 +31,8 @@ class FirebaseErrorHandler {
         return AppStrings.tooManyRequests;
       case 'operation-not-allowed':
         return AppStrings.operationNotAllowed;
+      case 'network-request-failed':
+        return AppStrings.networkRequestFailed;
       default:
         return error.message ?? AppStrings.defaultAuthError;
     }
@@ -68,6 +70,9 @@ class FirebaseErrorHandler {
         return AppStrings.invalidChecksum;
       case 'unknown':
         return AppStrings.unknownError;
+
+      case 'network-request-failed':
+        return AppStrings.networkRequestFailed;
 
       default:
         return error.message ?? AppStrings.unexpectedError;
