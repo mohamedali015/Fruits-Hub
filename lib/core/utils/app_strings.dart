@@ -60,8 +60,9 @@ abstract class AppStrings {
   static const String emptyField = "هذا الحقل مطلوب";
 
   // ✅ Auth Errors
-  static const String userNotFound = "لا يوجد مستخدم بهذا البريد.";
-  static const String wrongPassword = "كلمة المرور غير صحيحة.";
+  static const String invalidCredentials =
+      "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
+
   static const String emailAlreadyInUse = "هذا البريد مستخدم بالفعل.";
   static const String weakPassword = "كلمة المرور ضعيفة جدًا.";
   static const String invalidEmail = "البريد الإلكتروني غير صالح.";

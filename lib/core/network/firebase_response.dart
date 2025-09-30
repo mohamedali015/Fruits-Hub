@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fruits_hub/core/helper/custom_logger.dart';
 import '../utils/app_strings.dart';
 
 class FirebaseErrorHandler {
@@ -16,9 +17,13 @@ class FirebaseErrorHandler {
   static String _handleAuthError(FirebaseAuthException error) {
     switch (error.code) {
       case 'user-not-found':
-        return AppStrings.userNotFound;
+        return AppStrings.invalidCredentials;
       case 'wrong-password':
-        return AppStrings.wrongPassword;
+        return AppStrings.invalidCredentials;
+
+      case 'invalid-credential':
+        return AppStrings.invalidCredentials;
+
       case 'email-already-in-use':
         return AppStrings.emailAlreadyInUse;
       case 'weak-password':
@@ -34,6 +39,8 @@ class FirebaseErrorHandler {
       case 'network-request-failed':
         return AppStrings.networkRequestFailed;
       default:
+        CustomLogger.red(
+            "Unhandled FirebaseAuthException: ${error.code}, error massage: ${error.message}");
         return error.message ?? AppStrings.defaultAuthError;
     }
   }
@@ -75,6 +82,8 @@ class FirebaseErrorHandler {
         return AppStrings.networkRequestFailed;
 
       default:
+        CustomLogger.red(
+            "Unhandled FirebaseException: ${error.code}, error massage: ${error.message}");
         return error.message ?? AppStrings.unexpectedError;
     }
   }

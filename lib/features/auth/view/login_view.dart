@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/shared_widgets/custom_progress_hud.dart';
 import 'package:fruits_hub/core/utils/app_strings.dart';
 import 'package:fruits_hub/features/auth/data/repo/auth_repo.dart';
 import 'package:fruits_hub/features/auth/manager/login_cubit/login_cubit.dart';
@@ -33,7 +34,10 @@ class LoginView extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return LoginViewBody();
+              return CustomProgressHud(
+                isLoading: state is LoginLoadingState ? true : false,
+                child: LoginViewBody(),
+              );
             },
           );
         }),

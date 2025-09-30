@@ -8,6 +8,7 @@ import 'package:fruits_hub/features/auth/view/widgets/register_view_body.dart';
 
 import '../../../core/helper/get_it.dart';
 import '../../../core/shared_widgets/custom_app_bar.dart';
+import '../../../core/shared_widgets/custom_progress_hud.dart';
 import '../data/repo/auth_repo.dart';
 
 class RegisterView extends StatelessWidget {
@@ -33,7 +34,10 @@ class RegisterView extends StatelessWidget {
               }
             },
             builder: (context, state) {
-              return RegisterViewBody();
+              return CustomProgressHud(
+                isLoading: state is RegisterLoadingState ? true : false,
+                child: RegisterViewBody(),
+              );
             },
           );
         }),
