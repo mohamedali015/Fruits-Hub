@@ -12,4 +12,10 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
+
+  Future<Either<String, UserModel>> loginWithGoogle();
+
+  Future<Either<String, UserModel>> loginWithFacebook();
+
+  Future<Either<String, UserModel>> loginWithApple();
 }

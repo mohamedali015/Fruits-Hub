@@ -3,10 +3,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/helper/custom_logger.dart';
 import 'package:fruits_hub/features/auth/data/model/user_model.dart';
 import 'package:fruits_hub/features/auth/data/repo/auth_repo.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/network/firebase_response.dart';
 
 class AuthRepoImpl extends AuthRepo {
+  // Email & Password Register
   @override
   Future<Either<String, UserModel>> createUserWithEmailAndPassword({
     required String email,
@@ -28,6 +30,7 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  // Email & Password Login
   @override
   Future<Either<String, UserModel>> loginWithEmailAndPassword({
     required String email,
@@ -45,5 +48,44 @@ class AuthRepoImpl extends AuthRepo {
       String message = FirebaseErrorHandler.getErrorMessage(e);
       return Left(message);
     }
+  }
+
+  // Google Sign In
+  @override
+  Future<Either<String, UserModel>> loginWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      var user = await FirebaseAuth.instance.signInWithCredential(credential);
+
+      return Right(UserModel.fromFirebaseUser(user.user!));
+    } catch (e) {
+      CustomLogger.red(
+          "Exception From AuthRepoImpl.loginWithGoogle: ${e.toString()}");
+      String message = FirebaseErrorHandler.getErrorMessage(e);
+      return Left(message);
+    }
+  }
+
+  // Facebook Sign In
+  @override
+  Future<Either<String, UserModel>> loginWithFacebook() {
+    // TODO: implement loginWithFacebook
+    throw UnimplementedError();
+  }
+
+  // Apple Sign In
+  @override
+  Future<Either<String, UserModel>> loginWithApple() {
+    // TODO: implement loginWithGoogle
+    throw UnimplementedError();
   }
 }

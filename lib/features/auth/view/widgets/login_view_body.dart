@@ -84,7 +84,7 @@ class LoginViewBody extends StatelessWidget {
               SocialLoginButton(
                 imagePath: AppAssets.googleLogo,
                 title: AppStrings.signWithGoogle,
-                onPressed: () {},
+                onPressed: cubit.loginWithGoogle,
               ),
               SizedBox(
                 height: MyResponsive.height(value: 16),

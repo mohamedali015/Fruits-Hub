@@ -15,6 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  // Email & Password Login
   void login() async {
     if (!formKey.currentState!.validate()) {
       return;
@@ -31,6 +32,18 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
+  // Google Sign In
+  void loginWithGoogle() async {
+    emit(LoginLoadingState());
+    var result = await authRepo.loginWithGoogle();
+
+    result.fold(
+      (error) => emit(LoginFailureState(error)),
+      (user) => emit(LoginSuccessState(user)),
+    );
+  }
+
+  // Change Obscure Text
   void changeObscureText() {
     obscureText = !obscureText;
     emit(LoginToggleState());
