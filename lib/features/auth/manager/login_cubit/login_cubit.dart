@@ -43,6 +43,16 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
+  // Facebook Sign In
+  void loginWithFacebook() async {
+    emit(LoginLoadingState());
+    var result = await authRepo.loginWithFacebook();
+    result.fold(
+      (error) => emit(LoginFailureState(error)),
+      (user) => emit(LoginSuccessState(user)),
+    );
+  }
+
   // Change Obscure Text
   void changeObscureText() {
     obscureText = !obscureText;

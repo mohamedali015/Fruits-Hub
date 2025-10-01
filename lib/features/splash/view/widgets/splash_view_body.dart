@@ -31,7 +31,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         // plant -> slide from left + fade
         WidgetAnimator(
           incomingEffect: WidgetTransitionEffects.incomingSlideInFromTop(
-            duration: const Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 1000),
           ),
           child: Align(
             alignment: Alignment.topLeft,
@@ -42,7 +42,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         // logo -> rotate in
         WidgetAnimator(
           incomingEffect: WidgetTransitionEffects.incomingScaleDown(
-            duration: const Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 1000),
             delay: const Duration(milliseconds: 500),
           ),
           child: SvgWrapper(path: AppAssets.logo),
@@ -51,7 +51,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         // footer -> slide up + fade
         WidgetAnimator(
           incomingEffect: WidgetTransitionEffects.incomingSlideInFromBottom(
-            duration: const Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 1000),
             delay: const Duration(milliseconds: 1000),
           ),
           child: SvgWrapper(

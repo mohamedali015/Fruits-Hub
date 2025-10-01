@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruits_hub/core/helper/custom_logger.dart';
 import 'package:fruits_hub/features/auth/data/model/user_model.dart';
 import 'package:fruits_hub/features/auth/data/repo/auth_repo.dart';
@@ -77,9 +78,23 @@ class AuthRepoImpl extends AuthRepo {
 
   // Facebook Sign In
   @override
-  Future<Either<String, UserModel>> loginWithFacebook() {
-    // TODO: implement loginWithFacebook
-    throw UnimplementedError();
+  Future<Either<String, UserModel>> loginWithFacebook() async {
+    try {
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+
+      var user = await FirebaseAuth.instance
+          .signInWithCredential(facebookAuthCredential);
+
+      return Right(UserModel.fromFirebaseUser(user.user!));
+    } catch (e) {
+      CustomLogger.red(
+          "Exception From AuthRepoImpl.loginWithFacebook: ${e.toString()}");
+      String message = FirebaseErrorHandler.getErrorMessage(e);
+      return Left(message);
+    }
   }
 
   // Apple Sign In

@@ -100,7 +100,7 @@ class LoginViewBody extends StatelessWidget {
               SocialLoginButton(
                 imagePath: AppAssets.facebookLogo,
                 title: AppStrings.signWithFacebook,
-                onPressed: () {},
+                onPressed: cubit.loginWithFacebook,
               ),
               SizedBox(
                 height: MyResponsive.height(value: 60),

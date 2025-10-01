@@ -54,11 +54,11 @@ class MyApp extends StatelessWidget {
 
           // routes
           onGenerateRoute: onGenerateRoutes,
-          initialRoute: LoginView.routeName,
+          initialRoute: SplashView.routeName,
           home: child,
         );
       },
-      child: const LoginView(),
+      child: const SplashView(),
     );
   }
 }
