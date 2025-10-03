@@ -13,6 +13,10 @@ abstract class AuthRepo {
     required String password,
   });
 
+  Future addUserData({required UserModel user});
+
+  Future<UserModel> getUserData({required String uid});
+
   Future<Either<String, UserModel>> loginWithGoogle();
 
   Future<Either<String, UserModel>> loginWithFacebook();

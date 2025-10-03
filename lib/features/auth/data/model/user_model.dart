@@ -7,11 +7,27 @@ class UserModel {
 
   UserModel({required this.name, required this.email, required this.uId});
 
-  factory UserModel.fromFirebaseUser(User user) {
+  factory UserModel.fromFirebaseUser(User user, {String name = ''}) {
     return UserModel(
-      name: user.displayName ?? '',
+      name: user.displayName ?? name,
       email: user.email ?? '',
       uId: user.uid,
     );
+  }
+
+  factory UserModel.fromJson(Map<String, dynamic> map) {
+    return UserModel(
+      name: map['name'],
+      email: map['email'],
+      uId: map['uId'],
+    );
+  }
+
+  toMap() {
+    return {
+      'name': name,
+      'email': email,
+      'uId': uId,
+    };
   }
 }

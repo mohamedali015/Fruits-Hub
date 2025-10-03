@@ -41,8 +41,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
         // logo -> rotate in
         WidgetAnimator(
-          incomingEffect: WidgetTransitionEffects.incomingScaleDown(
-            duration: const Duration(milliseconds: 1000),
+          incomingEffect: WidgetTransitionEffects.outgoingScaleDown(
+            duration: const Duration(milliseconds: 500),
             delay: const Duration(milliseconds: 500),
           ),
           child: SvgWrapper(path: AppAssets.logo),
