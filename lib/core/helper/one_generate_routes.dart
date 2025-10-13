@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/auth/view/login_view.dart';
+import 'package:fruits_hub/features/home/view/home_view.dart';
 import 'package:fruits_hub/features/splash/view/splash_view.dart';
 
 import '../../features/auth/view/register_view.dart';
@@ -18,6 +19,9 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
 
     case RegisterView.routeName:
       return MaterialPageRoute(builder: (context) => const RegisterView());
+
+    case HomeView.routeName:
+      return MaterialPageRoute(builder: (context) => const HomeView());
 
     default:
       return MaterialPageRoute(builder: (context) => SplashView());

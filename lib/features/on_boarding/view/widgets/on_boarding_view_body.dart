@@ -18,39 +18,41 @@ class OnBoardingViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var cubit = OnBoardingCubit.get(context);
     return BlocBuilder<OnBoardingCubit, OnBoardingState>(
-      builder: (context, state) => Column(
-        children: [
-          Expanded(
-            child: OnBoardingPageView(),
-          ),
-          DotsIndicator(
-            dotsCount: 2,
-            decorator: DotsDecorator(
-              activeColor: AppColors.primary,
-              color: cubit.currentIndex == 1
-                  ? AppColors.primary
-                  : AppColors.primary.withValues(alpha: 0.5),
+      builder: (context, state) => SingleChildScrollView(
+        child: Column(
+          children: [
+            Expanded(
+              child: OnBoardingPageView(),
             ),
-          ),
-          SizedBox(height: MyResponsive.height(value: 29)),
-          Visibility(
-            visible: cubit.currentIndex == 1,
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            child: Padding(
-              padding: MyResponsive.paddingSymmetric(
-                  horizontal: AppConstants.paddingHorizontal),
-              child: CustomButton(
-                title: AppStrings.start,
-                onPressed: () {
-                  cubit.onBoardingTap(context);
-                },
+            DotsIndicator(
+              dotsCount: 2,
+              decorator: DotsDecorator(
+                activeColor: AppColors.primary,
+                color: cubit.currentIndex == 1
+                    ? AppColors.primary
+                    : AppColors.primary.withValues(alpha: 0.5),
               ),
             ),
-          ),
-          SizedBox(height: MyResponsive.height(value: 43)),
-        ],
+            SizedBox(height: MyResponsive.height(value: 29)),
+            Visibility(
+              visible: cubit.currentIndex == 1,
+              maintainSize: true,
+              maintainAnimation: true,
+              maintainState: true,
+              child: Padding(
+                padding: MyResponsive.paddingSymmetric(
+                    horizontal: AppConstants.paddingHorizontal),
+                child: CustomButton(
+                  title: AppStrings.start,
+                  onPressed: () {
+                    cubit.onBoardingTap(context);
+                  },
+                ),
+              ),
+            ),
+            SizedBox(height: MyResponsive.height(value: 43)),
+          ],
+        ),
       ),
     );
   }

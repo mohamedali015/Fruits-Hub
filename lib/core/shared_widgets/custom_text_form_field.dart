@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/shared_widgets/svg_wrapper.dart';
+import 'package:fruits_hub/core/utils/app_assets.dart';
 
 import '../helper/my_responsive.dart';
 import '../helper/validator.dart';
@@ -10,17 +12,19 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.type,
-    required this.controller,
+    this.controller,
     this.passController,
     this.obsecure = true,
     this.onSuffixTapped,
+    this.onChanged,
   });
 
   final TextFieldType type;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextEditingController? passController;
   final bool obsecure;
   final void Function()? onSuffixTapped;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +43,19 @@ class CustomTextFormField extends StatelessWidget {
 
       case TextFieldType.name:
         return _nameField(context, Validator.name);
+
+      case TextFieldType.search:
+        return _searchField(
+          context,
+          onChanged: onChanged,
+        );
     }
   }
 
   ///////////////////////--Decorations//////////////////////
   InputDecoration _inputDecoration(
     BuildContext context, {
-    required String label,
+    String? label,
     String? hint,
     Widget? suffixIcon,
     Widget? prefixIcon,
@@ -57,10 +67,15 @@ class CustomTextFormField extends StatelessWidget {
       labelStyle: AppTextStyles.bold13.copyWith(color: AppColors.gray400),
       filled: true,
       fillColor: AppColors.fillColor,
-      contentPadding: EdgeInsets.symmetric(
-        vertical: MyResponsive.height(value: 20),
-        horizontal: MyResponsive.width(value: 10),
-      ),
+      contentPadding: onChanged == null
+          ? MyResponsive.paddingSymmetric(
+              horizontal: 10,
+              vertical: 20,
+            )
+          : MyResponsive.paddingSymmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
       prefixIcon: prefixIcon,
       suffixIcon: suffixIcon,
       border: _border(context, AppColors.borderColor),
@@ -159,6 +174,26 @@ class CustomTextFormField extends StatelessWidget {
       ),
     );
   }
+
+  Widget _searchField(
+    BuildContext context, {
+    void Function(String)? onChanged,
+  }) {
+    return TextFormField(
+      style: _textStyle(context),
+      onChanged: onChanged,
+      keyboardType: TextInputType.text,
+      decoration: _inputDecoration(
+        context,
+        hint: AppStrings.searchHint,
+        prefixIcon: Icon(Icons.search, color: AppColors.gray400),
+        suffixIcon: IconButton(
+          onPressed: onSuffixTapped,
+          icon: SvgWrapper(path: AppAssets.filter),
+        ),
+      ),
+    );
+  }
 }
 
-enum TextFieldType { password, email, name }
+enum TextFieldType { password, email, name, search }

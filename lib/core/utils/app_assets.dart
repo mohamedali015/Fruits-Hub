@@ -18,4 +18,12 @@ abstract class AppAssets {
   static const String googleLogo = "${basePath}google.svg";
   static const String facebookLogo = "${basePath}facebook.svg";
   static const String appleLogo = "${basePath}apple.svg";
+
+  // home
+  static const String profileImage = "${basePath}profile_image.png";
+  static const String notification = "${basePath}notification.svg";
+  static const String filter = "${basePath}filter.svg";
+  static const String testImage = "${basePath}test_image.png";
+  static const String featuredItemBackground =
+      "${basePath}featured_item_background_image.svg";
 }

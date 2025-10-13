@@ -30,6 +30,7 @@ class RegisterView extends StatelessWidget {
               }
               if (state is RegisterSuccessState) {
                 MySnackbar.success(context, AppStrings.successRegister);
+                Navigator.pop(context);
                 // Navigator
               }
             },

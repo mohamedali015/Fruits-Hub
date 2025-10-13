@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:fruits_hub/core/helper/custom_logger.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'auth_services.dart';

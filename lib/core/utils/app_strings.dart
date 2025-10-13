@@ -37,6 +37,20 @@ abstract class AppStrings {
   static const String successRegister = "تم انشاء الحساب بنجاح";
   static const String successLogin = "تم تسجيل الدخول بنجاح";
 
+  // home
+  static const String goodMorning = "صباح الخير !..";
+  static const String searchHint = "ابحث عن....... ";
+  static const String mostSelling = "الأكثر مبيعًا";
+  static const String more = "المزيد";
+  static const String home = "الرئيسية";
+  static const String products = "المنتجات";
+  static const String shoppingCart = "سلة التسوق";
+  static const String myProfile = "حسابي";
+
+  static const String eidOffers = "عروض العيد";
+  static const String discount = "خصم 25%";
+  static const String shopNow = "تسوق الآن";
+
   // validators
   // الاسم
   static const String nameRequired = "من فضلك أدخل الاسم بالكامل";

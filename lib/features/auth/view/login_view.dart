@@ -10,6 +10,7 @@ import 'package:fruits_hub/features/auth/view/widgets/login_view_body.dart';
 import '../../../core/helper/get_it.dart';
 import '../../../core/helper/my_snackbar.dart';
 import '../../../core/shared_widgets/custom_app_bar.dart';
+import '../../home/view/home_view.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -31,6 +32,8 @@ class LoginView extends StatelessWidget {
               if (state is LoginSuccessState) {
                 MySnackbar.success(context, AppStrings.successLogin);
                 // Navigator
+                Navigator.pushNamedAndRemoveUntil(
+                    context, HomeView.routeName, (route) => false);
               }
             },
             builder: (context, state) {

@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruits_hub/core/helper/one_generate_routes.dart';
 import 'package:fruits_hub/core/utils/app_theme.dart';
 import 'package:fruits_hub/features/auth/view/login_view.dart';
+import 'package:fruits_hub/features/home/view/home_view.dart';
 import 'package:fruits_hub/features/on_boarding/view/on_boarding_view.dart';
 import 'package:fruits_hub/features/splash/view/splash_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
