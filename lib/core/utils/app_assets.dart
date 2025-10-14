@@ -26,4 +26,6 @@ abstract class AppAssets {
   static const String testImage = "${basePath}test_image.png";
   static const String featuredItemBackground =
       "${basePath}featured_item_background_image.svg";
+
+  static const String watermelon = "${basePath}watermelon.png";
 }

@@ -57,11 +57,11 @@ class MyApp extends StatelessWidget {
 
           // routes
           onGenerateRoute: onGenerateRoutes,
-          initialRoute: SplashView.routeName,
+          initialRoute: HomeView.routeName,
           home: child,
         );
       },
-      child: const SplashView(),
+      child: const HomeView(),
     );
   }
 }
